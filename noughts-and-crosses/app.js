@@ -2,7 +2,7 @@ const gameBoard = document.getElementById("gameboard")
 const infoDisplay = document.getElementById("info")
 const pokeName = document.getElementById("pokeName")
 const sprite = document.getElementById("sprite")
-const cells = ["", "", "", "", "", "", "", "", ""]
+const cells = ["", "", "", "", "", "", "", "", ""] // each square
 const players = ["Player 1", "Player 2"]
 let turn = players[0]
 
@@ -22,7 +22,6 @@ function createBoard() {
 createBoard()
 
 function addTurn(e) {
-    console.log("clicked", e)
     const turnDisplay = document.createElement("div")
     if (turn == players[0]){
         turnDisplay.classList.add('cross')
@@ -44,19 +43,18 @@ function checkScore () {
         [0, 4, 8], [2, 4, 6]              // diagonal
     ]
     winningCombos.forEach(array => {
-        const circleWins = array.every(cell => 
-            squares[cell].firstElementChild?.classList.contains("circle"))
-            if (circleWins) {
-                infoDisplay.textContent = `${turn} Wins!`
-            squares.forEach(square => square.removeEventListener("click", addTurn))
-        }
-    })
-
-    winningCombos.forEach(array => {
         const crossWins = array.every(cell => 
             squares[cell].firstElementChild?.classList.contains("cross"))
         if (crossWins) {
             infoDisplay.textContent = `${turn} Wins!`
+            squares.forEach(square => square.removeEventListener("click", addTurn))
+        }
+    })
+    winningCombos.forEach(array => {
+        const circleWins = array.every(cell => 
+            squares[cell].firstElementChild?.classList.contains("circle"))
+            if (circleWins) {
+                infoDisplay.textContent = `${turn} Wins!`
             squares.forEach(square => square.removeEventListener("click", addTurn))
         }
     })
