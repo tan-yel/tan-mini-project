@@ -3,7 +3,7 @@ const infoDisplay = document.getElementById("info")
 const pokeName = document.getElementById("pokeName")
 const sprite = document.getElementById("sprite")
 const cells = ["", "", "", "", "", "", "", "", ""] // each square
-const players = ["Player 1", "Player 2"]
+const players = ["Player 1", "Player 2", "Player 3"]
 let turn = players[0]
 
 
